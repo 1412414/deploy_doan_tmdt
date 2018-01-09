@@ -1,0 +1,29 @@
+<h3 class="container">Duyệt Khiếu nại</h3>
+<br>
+<div class="container">
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Khách hàng</th>
+			<th>Nhân viên</th>
+			<th>Lý do</th>
+			<th>Ngày</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @complaints.each do |complaint| %>
+
+		<tr>
+			<td><%= complaint.customer.customer_name %></td>
+			<td><%= complaint.employee.employee_name %></td>
+			<td><%= complaint.reason %></td>
+			<td><%= complaint.complaint_day %></td>
+			<td><a class="btn btn-success" href="<%= edit_complaint_path(complaint.id) %>">Xử lý</a></td>
+			
+		</tr>
+
+		<% end %>
+	</tbody>
+</table>
+</div>

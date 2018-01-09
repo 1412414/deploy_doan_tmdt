@@ -1,0 +1,45 @@
+<% content_for :title, "Tìm kiếm" %>
+<% i = 1 %>
+<% @auctions.each do |auction| %>
+	<% if i == 1 %>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="thumbnail">
+					<a  href="<%= image_path auction.image.url %>"><img src="<%= image_path auction.image.url %>" alt=""/></a>
+					<div class="caption">
+						<h5><%= auction.product_name %></h5>
+						<p><%= auction.description %></p>
+						<h4 style="text-align:center"><a class="btn btn-success"> <%= auction.current_price %> VNĐ </a> <a class="btn btn-default" href="#">Thêm vào <i class="fa fa-eye" aria-hidden="true"></i></a> <a class="btn btn-primary" href="<%= auction_path(auction.auction_id) %>"><i class="fa fa-gavel" aria-hidden="true"></i></a></h4>	  
+					</div>
+				</div>	
+			</div>
+		<% i += 1 %>
+	<% else %>
+		<% if i == 3 %>
+				<div class="col-lg-4">
+					<div class="thumbnail">
+						<a  href="<%= image_path auction.image.url %>"><img src="<%= image_path auction.image.url %>" alt=""/></a>
+						<div class="caption">
+							<h5><%= auction.product_name %></h5>
+							<p><%= auction.description %></p>
+							<h4 style="text-align:center"><a class="btn btn-success"> <%= auction.current_price %> VNĐ </a> <a class="btn btn-default" href="#">Thêm vào <i class="fa fa-eye" aria-hidden="true"></i></a> <a class="btn btn-primary" href="<%= auction_path(auction.auction_id) %>"><i class="fa fa-gavel" aria-hidden="true"></i></a></h4>	  
+						</div>
+					</div>	
+				</div>
+			</div>
+			<% i = 1 %>
+		<% else %>
+			<div class="col-lg-4">
+				<div class="thumbnail">
+					<a  href="<%= image_path auction.image.url %>"><img src="<%= image_path auction.image.url %>" alt=""/></a>
+					<div class="caption">
+						<h5><%= auction.product_name %></h5>
+						<p><%= auction.description %></p>
+						<h4 style="text-align:center"><a class="btn btn-success"> <%= auction.current_price %> VNĐ </a> <a class="btn btn-default" href="#">Thêm vào <i class="fa fa-eye" aria-hidden="true"></i></a> <a class="btn btn-primary" href="<%= auction_path(auction.auction_id) %>"><i class="fa fa-gavel" aria-hidden="true"></i></a></h4>	  
+					</div>
+				</div>	
+			</div>
+			<% i += 1 %>
+		<% end %>
+	<% end %>
+<% end %>

@@ -1,0 +1,51 @@
+<h3 class="container">Xử lý Báo cáo vi phạm</h3>
+
+<div class="container">
+	<h4>Khách hàng báo cáo</h4>
+	<%= @report.reporter_name %>
+	<br>
+	<br>
+	<h4>Khách hàng vi phạm</h4>
+	<%= @report.reported %>
+	<br>
+	<br>
+	<h4>Hóa đơn</h4>
+	<%= @report.receipt_id %>
+	<br>
+	<br>
+	<h4>Lý do</h4>
+	<%= @report.reason %>
+	<br>
+	<br>
+	<hr>
+	<h4>Cách xử lý</h4>
+	<%= form_tag customer_receipt_report_path, method: :patch, local: true do |f|%>
+	<div class="form-group">
+		<!-- <label class="btn btn-success">
+			<%= radio_button_tag 'dieuchinh', 'ngungblock', true %> Ngừng block
+		</label> -->
+		<label class="btn btn-default">
+			<%= radio_button_tag 'dieuchinh', 'block3ngay' %> Block 3 ngày
+		</label>
+		<label class="btn btn-default">
+			<%= radio_button_tag 'dieuchinh', 'block1tuan' %> Block 1 tuần
+		</label>
+		<label class="btn btn-default">
+			<%= radio_button_tag 'dieuchinh', 'block2tuan' %> Block 2 tuần
+		</label>
+		<label class="btn btn-default">
+			<%= radio_button_tag 'dieuchinh', 'block1thang' %> Block 1 tháng
+		</label>
+		<label class="btn btn-default">
+			<%= radio_button_tag 'dieuchinh', 'blockvinhvien' %> Block vĩnh viễn
+		</label>
+	</div>
+	<br>
+	<div class="form-group">
+		<%= text_area_tag 'giaithich', nil, placeholder: 'Lý do...', rows: "10", cols: "108" %>
+	</div>
+	<br>
+	
+	<button type="submit" class="btn">Xử lý xong</button>
+	<% end -%>
+</div>

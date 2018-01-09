@@ -1,0 +1,39 @@
+<% content_for :title, "Thông Tin Sản Phẩm" %>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+    <div class="panel-heading">Quản Lý Danh Sách Sản Phẩm</div>
+    <div class="panel-body">
+      <table class="table table-striped">
+     <thead>
+       <tr>
+         <th> ID </th>
+         <th>Tên Sản Phẩm </th>
+         <th>Mô Tả </th>
+         <th> Loại Sản Phẩm </th>
+         <th> Danh Mục </th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @sanpham.each do |sp| %>
+       <tr>
+           <td style="width:5% ">  <%= sp.product_id %> </td>
+         <td style="width: 20% ">
+           <input type="text" class="form-control"   id="product_name_<%=sp.product_id%>" value =" <%= sp.product_name %> ">
+
+       </td>
+         <td style="width: 50% ">
+            <input type="text" class="form-control" rows="5"  id="description_<%=sp.product_id%>" value ="<%= sp.description %> ">
+            </td>
+         <td> <%= sp.product_type_name %> </td>
+         <td> <%= sp.category_name %> </td>
+         <td> <button type="button" class="btn btn-success" id = "<%= sp.product_id %>" onclick="Update_San_Pham(<%= sp.product_id %>)" >Update</button>
+         </td>
+       </tr>
+       <%end%>
+     </tbody>
+   </table>
+    </div>
+  </div>
+  </div>
+</div>

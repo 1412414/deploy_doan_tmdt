@@ -1,0 +1,45 @@
+<% content_for :title, "Quan Ly Dau Gia " %>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+    <div class="panel-heading">Danh Sach Cac Phien Dau Gia Dang Dan Dau </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>ID Dau Gia</th>
+         <th>Ten San Pham </th>
+         <th>Muc Gia Cao Nhat  </th>
+         <th>Tinh Trang </th>
+         <th> ID Khach Hang </th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @detail.each do |dt| %>
+       <tr>
+           <td style="width:20% ">
+              <input type="text" class="form-control"   id="auctionid_<%= dt.detail_id%>" value ="<%= dt.auction_id %>" disabled >
+           </td>
+         <td style="width: 20% ">
+        <%= dt.product_name %>
+       </td>
+         <td >
+          <%= dt.max_bid %>
+          </td>
+          <td>
+              <%= dt.status %>
+          </td>
+          <td>
+              <%= dt.customer_id %>
+          </td>
+         <td> <button type="button" class="btn btn-success" id = "<%= dt.detail_id%>" onclick="Huy_DauGia(<%= dt.detail_id  %>)" >Huy Dau Gia </button>
+         </td>
+
+       </tr>
+       <%end%>
+     </tbody>
+   </table>
+    </div>
+  </div>
+  </div>
+</div>

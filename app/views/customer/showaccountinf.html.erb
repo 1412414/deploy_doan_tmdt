@@ -1,0 +1,83 @@
+<% content_for :title, "Thông tin tài khoản" %>
+<h3>Thông tin cá nhân</h3>
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th style="padding-left:10px; font-weight:bold; font-size:18px">Thông tin tài khoản</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="39%">Loại tài khoản</td>
+      <td width="40%"><%= @customer.customer_type %></td>
+      <td width="21%" style="text-align: right;"><a href ="<%= customer_edit_path(session[:id_current_customer]) %>">Chỉnh sửa</a></td>
+    </tr>
+    <tr>
+      <td width="39%">User ID</td>
+      <td width="40%"><%= @customer.id %></td>
+      <td width="21%" style="text-align: right;"></td>
+    </tr>
+    <tr>
+      <td width="39%">Mật khẩu</td>
+      <td width="40%">
+        <%= '***' %>
+      </td>
+      <td width="21%" style="text-align: right;"><a href ="<%= customer_edit_path(session[:id_current_customer]) %>">Chỉnh sửa</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th style="padding-left:10px; font-weight:bold; font-size:18px">Email và Thông tin liên hệ</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="39%">Địa chỉ email đã đăng ký</td>
+      <td width="40%"><%= @customer.username %></td>
+      <td width="21%" style="text-align: right;"><a href ="<%= customer_edit_path(session[:id_current_customer]) %>">Chỉnh sửa</td>
+    </tr>
+    <tr>
+      <td width="39%">Địa chỉ email liên hệ</td>
+      <td width="40%"><%= @customer.email %></td>
+      <td width="21%" style="text-align: right;"><a href ="<%= customer_edit_path(session[:id_current_customer]) %>">Chỉnh sửa</td>
+    </tr>
+    <tr>
+      <td width="39%">Địa chỉ liên hệ</td>
+      <td width="40%"><%= @customer.address %></td>
+      <td width="21%" style="text-align: right;"><a href ="<%= customer_edit_path(session[:id_current_customer]) %>">Chỉnh sửa</td>
+    </tr>
+    <tr>
+      <td width="39%">Địa chỉ giao hàng</td>
+      <td width="40%"><%= @customer.shipping_address %></td>
+      <td width="21%" style="text-align: right;"><a href ="<%= customer_edit_path(session[:id_current_customer]) %>">Chỉnh sửa</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th style="padding-left:10px; font-weight:bold; font-size:18px">Thông tin tài chính</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="39%">Tài khoản paypal</td>
+      <td width="40%">
+        <% if @customer.paypal %>
+          <%= @customer.paypal %>
+        <% else %>
+          <%= 'Chưa có tài khoản' %>
+        <% end %>
+      </td>
+      <td width="21%" style="text-align: right;"><a href ="<%= customer_edit_path(session[:id_current_customer]) %>">Chỉnh sửa</td>
+    </tr>
+  </tbody>
+</table>

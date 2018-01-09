@@ -1,0 +1,65 @@
+<div id="header">
+        <div class="container">
+            <div id="welcomeLine" class="row  margin-top">
+                <% if session[:id_current_customer] %>
+                    <div class="col-lg-12">Xin chào!<strong> <a href="<%= customer_show_path %>"><%= session[:customer_name_current_customer] %></a></strong>
+                        <div class="pull-right">
+                            <a href="<%=  customer_notification_index_path(session[:id_current_customer]) %>"><span class="btn btn-xs btn-primary">Thông báo</span> </a>
+                            <a href="<%=  xemsp_path %>"><span class="btn btn-xs btn-primary">Xem San Pham</span> </a>
+                            <a href="<%=  xemphien_path %>"><span class="btn btn-xs btn-primary">Xem Phien</span> </a>
+                            <a href="<%=  xem_daugia_path%>"><span class="btn btn-xs btn-primary">Xem Dau Gia</span> </a>
+                            <a href="<%= customer_receipt_index_path(session[:id_current_customer]) %>"><span class="btn btn-xs btn-primary">Hóa đơn mua</span> </a>
+                            <a href="<%= customer_invoice_index_path(session[:id_current_customer]) %>"><span class="btn btn-xs btn-primary">Hóa đơn bán</span> </a>
+                            <a href="<%= new_customer_product_path(session[:id_current_customer]) %>"><span class="btn btn-xs btn-primary">Đăng sản phẩm</span> </a>
+                            <a href="product_summary.html"><span class="btn btn-xs btn-primary"><i class="fa fa-eye"></i> Phiên đấu giá bạn thích </span> </a>
+                        </div>
+                    </div>
+                <% else %>
+                    <div class="col-lg-12">Xin chào!
+                    </div>
+                <% end %>
+            </div>
+            <!-- Navbar ================================================== <--></-->
+            <div id="logoArea" class="navbar  navbar-inverse margin-top padding">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topMenu" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="index.html"><img src="<%= image_path "images/OdunAuction.png" %>" alt="Bootsshop"/></a>
+                    </div>
+                    <%= form_with scope: :search, url: "/TimKiem", local: true, class: "navbar-form navbar-left" do |f|%>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    <%= f.text_field :search_key, :required => true, class: "form-control input-sm", placeholder: "Tìm kiếm" %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control input-sm" name="search[search_category]">
+                                    <option>Tất cả</option>
+                                    <%= categories_navbar() %>
+                                </select>
+                            </div>
+                            <button type="submit" id="submitButton" class="btn btn-primary">Tìm</button>
+                    <% end %>
+                    <div class="collapse navbar-collapse" id="topMenu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="navbar-color"><a class="navbar-a" href="special_offer.html">Giảm giá</a></li>
+                            <li class=""><a class="navbar-a" href="normal.html">Giao hàng</a></li>
+                            <li class=""><a class="navbar-a" href="contact.html">Liên hệ</a></li>
+                            <<% if session[:id_current_customer] %>
+                                <button class="btn btn-success"><a href="<%= logout_path %>" data-method="delete" style="color: white; text-decoration: none;">Đăng xuất</a></button>
+                            <% else %>
+                                 <button class="btn btn-success"><%= link_to "Đăng nhập", login_path, {:style => 'color: white; text-decoration: none'} %></button>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    <!-- Header End====================================================================== -->

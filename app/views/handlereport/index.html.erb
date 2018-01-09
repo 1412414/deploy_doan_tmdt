@@ -1,0 +1,31 @@
+<h3 class="container">Duyệt Báo cáo vi phạm</h3>
+<br>
+<div class="container">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Khách hàng báo cáo</th>
+				<th>Khách hàng vi phạm</th>
+				<th>Hóa đơn</th>
+				<th>Lý do</th>
+				<th>Ngày</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @reports.each do |report| %>
+			<tr>
+				<td><%= report.reporter_name %></td>
+				<td><%= report.reported %></td>
+				<td><%= report.receipt_id %></td>
+				<td><%= report.reason %></td>
+				<td><%= report.created_at %></td>
+				<td>
+					<a class="btn btn-success" href="<%= customer_receipt_report_path(report.reporter_id, report.receipt_id, report.id) %>">Xử lý</a>
+				</td>
+			</tr>
+
+			<% end %>
+		</tbody>
+	</table>
+</div>

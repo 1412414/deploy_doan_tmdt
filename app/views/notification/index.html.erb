@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tiêu đề</th>
+      <th>Nội dung</th>
+      <th>Thời gian gửi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notifications.each do |n| %>
+      <tr>
+        <td><%= n.title %></td>
+        <td><%= n.content %></td>
+        <td><%= n.sending_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

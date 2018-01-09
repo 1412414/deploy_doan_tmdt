@@ -1,0 +1,60 @@
+<% content_for :title, "Quan Ly Phien Dau Gia " %>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+    <div class="panel-heading">Danh Sach Phien Dau Gia </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+     <thead>
+       <tr>
+         <th> ID </th>
+         <th>Thoi gian bat dau </th>
+         <th>Thoi gian ket thuc </th>
+         <th>Gia khoi diem </th>
+         <th> Gia toi da </th>
+         <th> Gia hien tai </th>
+         <th> Tinh trang </th>
+         <th> Buoc gia </th>
+         <th> Ten san pham </th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @auctions.each do |au| %>
+       <tr>
+           <td style="width:5% ">  <%= au.auction_id %> </td>
+         <td style="width: 20% ">
+        <%= au.auctions_start_time %>
+
+       </td>
+         <td >
+          <%= au.endtime %>
+          </td>
+          <td>
+              <%= au.start_price %>
+          </td>
+          <td>
+              <%= au.max_price %>
+          </td>
+          <td>
+              <%= au.auction_current %>
+          </td>
+          <td>
+            <%= au.auction_status%>
+          </td>
+          <td>
+              <%= au.auction_increment%>
+          </td>
+          <td>
+              <%= au.product_name%>
+          </td>
+
+         <td> <button type="button" class="btn btn-success" id = "<%= au.auction_id %>" onclick="Xoa_Phien_DauGia(<%= au.auction_id  %>)" >Xoa</button>
+         </td>
+       </tr>
+       <%end%>
+     </tbody>
+   </table>
+    </div>
+  </div>
+  </div>
+</div>

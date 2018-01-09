@@ -1,0 +1,40 @@
+<% content_for :title, "Đăng nhập" %>
+<div class="text-center mt-5 mb-5 mr-5">
+	<h1>Đăng nhập</h1>
+</div>
+<div class="container">
+	<div class="row col-md-12">
+		<div class="col-md-5 col-md-offset-4">
+			<%= form_with scope: :session, local: true do |f|%>		
+			<div class="form-group">
+				<label for="">
+					Email
+				</label>
+				<%= f.text_field :username, :required => true, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<label for="">Password</label>
+				<%= f.password_field :password, :required => true, class: "form-control" %>
+			</div>
+			<div class="checkbox">
+	            <label><input type="checkbox"> Nhớ tên đăng nhập và mật khẩu</label>
+	        </div>
+			<!-- <br> -->
+
+			<button type="submit" class="btn btn-success mr-3">Đăng nhập</button>
+			<button class="btn btn-warning mr-3"><%= link_to "Đăng ký", new_customer_path, {:style => 'color: white; text-decoration: none'} %></button>
+			<% end %>
+		</div>
+	</div>
+	<div class="row col-md-12" style="margin-top: 5px">
+	    <div class="container-fluid">
+	        <% if flash[:login_error] %>
+	            <div class="alert alert-danger alert-dismissable fade in">
+	                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	                <strong>Error!</strong>
+	                <%= flash[:login_error] %>
+	            </div>
+	        <% end %>
+	    </div>
+	</div>	
+</div>

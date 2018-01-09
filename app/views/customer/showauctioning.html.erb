@@ -1,0 +1,44 @@
+<% content_for :title, "Phiên đấu giá đã tham gia" %>
+<% @auctions.each do |auction| %>
+	<div class="row">
+		<div class="col-lg-4">
+			<a  href="<%= image_path auction.image.url %>"><img class="img-res" src="<%= image_path auction.image.url %>" alt=""/></a>
+		</div>
+		<div class="col-lg-8">
+			<table class="table table-hover">
+			  <thead>
+			    <tr class="info">
+			      <th style="padding-left:10px; font-weight:bold; font-size:18px; width: 50%">Thông tin phiên đấu giá</th>
+			      <th style="width: 50%"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td style="font-weight: bold; width: 50%">Tên sản phẩm</td>
+			      <td style="width: 50%"><%= auction.product_name %></td>
+			    </tr>
+			    <tr>
+			      <td style="font-weight: bold; width: 50%">Mô tả</td>
+			      <td style="width: 50%"><%= auction.description %></td>
+			    </tr>
+			    <tr>
+			      <td style="font-weight: bold; width: 50%">Tên người bán</td>
+			      <td style="width: 50%"><%= auction.customer_name %></td>
+			    </tr>
+			    <tr>
+			      <td style="font-weight: bold; width: 50%">Thời gian bắt đầu</td>
+			      <td style="width: 50%"><%= auction.starting_time %></td>
+			    </tr>
+			    <tr>
+			      <td style="font-weight: bold; width: 50%">Thời gian kết thúc</td>
+			      <td style="width: 50%"><%= auction.ending_time %></td>
+			    </tr>
+			    <tr>
+			      <td style="font-weight: bold; width: 50%">Giá cao nhất</td>
+			      <td style="width: 50%"><%= auction.current_price %> VNĐ</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+<% end %>

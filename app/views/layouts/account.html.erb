@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= yield(:title) %></title>
+
+    <%= render 'bootstrap_jquery' %>
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>    	
+</head>
+
+<body>
+    <%= render 'navbar' %>
+
+    <div id="mainBody" style="margin-top: 20px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 affix-sidebar">
+                    <div class="sidebar-nav">
+                        <div class="navbar navbar-default" role="navigation">
+                            <div class="navbar-header">
+                              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              </button>
+                              <span class="visible-xs navbar-brand">Sidebar menu</span>
+                            </div>
+                            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                              <ul class="nav navbar-nav" id="sidenav01">
+                                <li><a href="<%= customer_show_path %>">Thông tin cá nhân</a></li>
+                                <li>
+                                  <a data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">Phiên đấu giá <span class="caret pull-right"></span></a>
+                                  <div class="collapse" id="toggleDemo" style="height: 0px;">
+                                    <ul class="nav nav-list">
+                                      <li><a href="<%= customer_show_auction_path %>" style="text-decoration: none; border-top: 1px solid #CCC">Đã tham gia</a></li>
+                                      <li><a href="<%= customer_show_auctioning_path %>" style="text-decoration: none; border-top: 1px solid #CCC">Đang tham gia</a></li>                                          
+                                    </ul>
+                                  </div>
+                                </li>
+                                <li><a href="<%= customer_showfavlist_path %>">Danh sách yêu thích</a></li>                                    
+                                <li>
+                                  <a data-toggle="collapse" data-target="#toggleDemo2" data-parent="#sidenav01" class="collapsed">Tất cả sản phẩm <span class="caret pull-right"></span></a>
+                                  <div class="collapse" id="toggleDemo2" style="height: 0px;">
+                                    <ul class="nav nav-list">
+                                      <li><a href="<%= customer_showproduct_path %>" style="text-decoration: none; border-top: 1px solid #CCC">Sản phẩm đã đăng</a></li>
+                                      <li><a href="<%= customer_showsoldproduct_path %>" style="text-decoration: none; border-top: 1px solid #CCC">Sản phẩm bán được</a></li>
+                                    </ul>
+                                  </div>
+                                </li>                                   
+                              </ul>
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </div>
+                </div>                                                     
+                <div class="col-lg-10 affix-content">
+                    <%= yield %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   	<%= render 'footer' %>
+</body>
+
+</html>

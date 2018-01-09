@@ -1,0 +1,22 @@
+<div class="container">
+	<!-- <hr class="soften"> -->
+	<h2>Khiếu nại khóa tài khoản</h2>
+	<!-- <hr class="soften"/> -->
+	<div class="">
+		<br>
+	
+		<h4>Tài khoản của bạn bị khóa tới: <%= @cus.blocking_time %></h4>
+		<br>
+
+		<%= form_with scope: :complaint, url: complaint_index_path, local: true do |f|%>
+
+		<div class="form-group">
+			<%= f.text_area :reason, placeholder: "Nội dung khiếu nại", class: 'form-control', rows: "10" %>
+		</div>
+
+		<br>
+		<button type="submit" class="btn">Gửi khiếu nại</button>
+		<% end %>
+	</div>
+</div>
+</div>

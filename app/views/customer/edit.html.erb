@@ -1,0 +1,68 @@
+<% content_for :title, "Chỉnh sửa" %>
+<div class="col-md-3"></div>
+<div class="col-md-9">
+	<div class="row">
+		<div class="col-md-12 mt-2 mb-2">
+			<h1>Chỉnh sửa thông tin cá nhân</h1>
+		</div>
+	</div>
+	<div class="bd-edit">
+		<div class="row">
+			<div class="col-md-12" style="margin: 0 10px">		
+				<h2>Thông tin cá nhân</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 px-5" style="margin: 0 30px">
+				<%= form_with scope: :customer, url: customer_edit_path(session[:id_current_customer]), local: true do |f|%>
+				<label for="">Loại tài khoản</label>
+				<div class="form-check">				
+				    <label class="form-check-label">
+				    	<%= f.radio_button :customer_type, 'Thường', :required => true %>
+				    	<%= f.label :customer_type, "Thường", :value => 'Thường' %>
+				    </label>
+				</div>
+				<div class="form-check">				
+				    <label class="form-check-label">
+				    	<%= f.radio_button :customer_type, 'VIP', :required => true %>
+				    	<%= f.label :customer_type, "VIP", :value => 'VIP' %>
+				    </label>
+				</div>
+				<div class="form-group">
+					<label for="">Họ tên</label>
+					<%= f.text_field :customer_name, :required => true, class: "form-control" %>
+				</div>
+				<div class="form-group">
+					<label for="">Email liên hệ</label>
+					<%= f.email_field :email, class: "form-control" %>
+				</div>
+				<div class="form-group">
+					<label for="">Mật khẩu</label>
+					<%= f.password_field :password, :required => true, class: "form-control" %>
+				</div>
+				<div class="form-group">
+					<label for="">Địa chỉ liên hệ</label>
+					<%= f.text_field :address, class: "form-control" %>
+				</div>
+				<div class="form-group">
+					<label for="">Địa chỉ giao hàng</label>
+					<%= f.text_field :shipping_address, class: "form-control" %>
+				</div>
+				<button class="btn btn-success mr-3"><%= link_to "Quay về", customer_show_path, {:style => 'color: white; text-decoration: none'} %></button>
+				<button type="submit" class="btn btn-primary">Cập nhật</button>				
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+    <div class="container-fluid">
+        <% if flash[:error] %>
+            <div class="alert alert-danger alert-dismissable fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Error!</strong>
+                <%= flash[:error] %>
+            </div>
+        <% end %>
+    </div>
+</div>	
